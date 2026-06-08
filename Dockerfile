@@ -1,14 +1,12 @@
-#FROM harbor.magiclab.top/magiclab-base/python:3.12-slim
+FROM registry.cn-hangzhou.aliyuncs.com/zhengyu1992/python:3.12-slim
 
-# 更新源、安装软件、清除缓存一把梭
-#RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list.d/debian.sources && \
-#    apt-get update && apt-get install -y --no-install-recommends \
-#    skopeo \
-#    ca-certificates \
-#    && rm -rf /var/lib/apt/lists/*
+ 更新源、安装软件、清除缓存一把梭
+RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list.d/debian.sources && \
+    apt-get update && apt-get install -y --no-install-recommends \
+    skopeo \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
 
-
-FROM harbor.magiclab.top/magiclab-base/python:3.12-slim-skopeo
 WORKDIR /app
 COPY app.py /app/app.py
 
